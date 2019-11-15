@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>药京采分享测试页</title>
+    <script>
+
+    </script>
+    <style>
+        #title {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 18px;
+            color: black;
+        }
+
+        #share1,
+        #share2 {
+            text-align: center;
+            display: block;
+            color: white;
+            font-size: 16px;
+            background-color: #3385ff;
+            border-radius: 6px;
+            border: 0;
+            margin: 0 auto;
+            padding: 5px 10px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        #share1 {
+            margin-top: 100px;
+        }
+
+        #share2 {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id='title'>药京采分享测试</h1>
+    <button id='share1'>详情页分享</button>
+    <button id='share2'>活动页分享</button>
+
+    <script>
+
+
+
+        let json1 = {
+            "shareSource": 1,
+            "sharePlatform": 7,
+            "title": "药京采",
+            "content": "药京采是京东旗下<B2B>平台,为您提供优质服务,药京采是京东旗下<B2B>平台,为您提供优质服务",
+            "shareUrl": "https://www.jd.com",
+            "shareImageUrl": "http://img0.imgtn.bdimg.com/it/u=1744301964,293795862&fm=26&gp=0.jpg",
+        };
+
+        let json2 = {
+            "shareSource": 2,
+            "sharePlatform": 7,
+            "title": "药京采是京东旗下<B2B>平台,为您提供优质服务,药京采是京东旗下<B2B>平台,为您提供优质服务",
+            "content": "药京采是京东旗下<B2B>平台,为您提供优质服务,药京采是京东旗下<B2B>平台,为您提供优质服务",
+            "shareUrl": "https://www.jd.com",
+            "shareImageUrl": "http://pic31.nipic.com/20130729/9959548_153744264349_2.jpg",
+            "beginTime": "2019.10.01 00:00:00",
+            "endTime": "2019.11.11 24:00:00"
+        };
+
+        function ShareFunc(json) {
+            console.log('ShareFunc');
+            window.webkit.messageHandlers.ShareFunc.postMessage(json);
+        }
+
+        function ocToJs() {
+            document.getElementsByTagName('body')[0].style.backgroundColor = "#00FF00";
+            return "oc掉js后返回给native的值";
+        }
+        
+        onload = function () {
+            document.getElementById('share1').onclick = function () {
+                console.log('点击详情页分享');
+                ShareFunc(json1);
+            }
+
+            document.getElementById('share2').onclick = function () {
+                console.log('点击活动页分享');
+                ShareFunc(json2);
+            }
+
+
+
+        }
+    </script>
+</body>
+
+</html>
