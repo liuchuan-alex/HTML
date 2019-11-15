@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>药京采h5交互</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="http://g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <link rel="stylesheet" href="http://g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css">
+
+</head>
+
+<body>
+    <div class="page-group">
+
+        <div class="page page-current">
+            <div class="content">
+
+                <div class="content-block-title">药京采h5交互</div>
+                <div class="list-block media-list">
+                    <ul>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title-row">
+                                        <div class="item-title">userAgent</div>
+                                    </div>
+                                    <div id="user_agent">加载中……</div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="item-content" id="reload">
+                                <div class="item-inner">
+                                    <div class="item-title-row">
+                                        <div class="item-title">reload</div>
+                                    </div>
+                                    <div class="item-subtitle">刷新当前页</div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="item-content" id="AppUseNativeNavigationBar">
+                                <div class="item-inner">
+                                    <div class="item-title-row">
+                                        <div class="item-title">AppUseNativeNavigationBar</div>
+                                    </div>
+                                    <div class="item-subtitle">使用原生导航栏</div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="item-content" id="AppUseH5NavigationBar">
+                                <div class="item-inner">
+                                    <div class="item-title-row">
+                                        <div class="item-title">AppUseH5NavigationBar</div>
+                                    </div>
+                                    <div class="item-subtitle">使用h5导航栏</div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="item-content" id="AppOpenURL">
+                                <div class="item-inner">
+                                    <div class="item-title-row">
+                                        <div class="item-title">AppOpenURL</div>
+                                    </div>
+                                    <div class="item-subtitle">打开新web页</div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="item-content" id="AppOpenURLFullScreen">
+                                <div class="item-inner">
+                                    <div class="item-title-row">
+                                        <div class="item-title">AppOpenURL</div>
+                                    </div>
+                                    <div class="item-subtitle">打开新web页(整屏)</div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="item-content" id="AppUseNativeShare">
+                                <div class="item-inner">
+                                    <div class="item-title-row">
+                                        <div class="item-title">AppUseNativeShare</div>
+                                    </div>
+                                    <div class="item-subtitle">调出原生分享页面</div>
+                                </div>
+                            </div>
+                        </li>
+
+
+                    </ul>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <script type='text/javascript' src='http://g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+
+    <script type='text/javascript' src='http://g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+
+    <script type='text/javascript' src='http://g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#user_agent").text(navigator.userAgent);
+
+            $("#reload").click(function () {
+                location.reload();
+            });
+
+            $("#AppUseNativeNavigationBar").click(function () {
+                window.webkit.messageHandlers.AppUseNativeNavigationBar.postMessage(null);
+            });
+
+            $("#AppUseH5NavigationBar").click(function () {
+                window.webkit.messageHandlers.AppUseH5NavigationBar.postMessage(null);
+            });
+
+            $("#AppOpenURL").click(function () {
+                var param = {
+                    url: location.href,
+                    fullscreen: false
+                };
+                window.webkit.messageHandlers.AppOpenURL.postMessage(param);
+            });
+
+            $("#AppOpenURLFullScreen").click(function () {
+                var param = {
+                    url: location.href,
+                    fullscreen: true
+                };
+                window.webkit.messageHandlers.AppOpenURL.postMessage(param);
+            });
+
+            $("#AppUseNativeShare").click(function () {
+                var param = {
+                    style: 1,
+                    platform: 1|2|4,
+                    message: {
+                        title: "药京采是京东旗下<B2B>平台,为您提供优质服务",
+                        content: "药京采是京东旗下<B2B>平台,为您提供优质服务,药京采是京东旗下<B2B>平台,为您提供优质服务",
+                        subTitle: "活动时间",
+                        description: "2019.11.01 00:00:00-2019.11.11 24:00:00",
+                        shareUrl: "https://www.jd.com",
+                        shareImageUrl: "http://pic31.nipic.com/20130729/9959548_153744264349_2.jpg",
+                    }
+                };
+                window.webkit.messageHandlers.AppUseNativeShare.postMessage(param);
+            });
+
+        });
+    </script>
+
+
+</body>
+
+</html>
