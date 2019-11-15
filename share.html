@@ -52,7 +52,7 @@
 
         var param1 = {
                     style: 1,
-                    platform: 7,
+                    platform: 1|2|4,
                     message: {
                         title: "药京采是京东旗下<B2B>平台,为您提供优质服务",
                         content: "药京采是京东旗下<B2B>平台,为您提供优质服务,药京采是京东旗下<B2B>平台,为您提供优质服务",
@@ -88,12 +88,12 @@
         onload = function () {
             document.getElementById('share1').onclick = function () {
                 console.log('详情页分享');
-                AppUseNativeShare(json1);
+                AppUseNativeShare(param1);
             }
 
             document.getElementById('share2').onclick = function () {
                 console.log('点击活动页分享');
-                AppUseNativeShare(json2);
+                AppUseNativeShare(param2);
             }
 
 
