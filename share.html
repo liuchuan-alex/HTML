@@ -51,41 +51,44 @@
     <script>
 
         var param1 = {
-                    style: 1,
-                    platform: 1|2|4,
-                    message: {
-                        title: "药京采是京东旗下<B2B>平台,为您提供优质服务",
-                        content: "药京采是京东旗下<B2B>平台,为您提供优质服务,药京采是京东旗下<B2B>平台,为您提供优质服务",
-                        subTitle: "活动时间",
-                        description: "2019.11.01 00:00:00-2019.11.11 24:00:00",
-                        shareUrl: "https://www.jd.com",
-                        shareImageUrl: "http://pic31.nipic.com/20130729/9959548_153744264349_2.jpg",
-                    }
-                };
+            style: 1,
+            platform: 1 | 2 | 4,
+            message: {
+                title: "药京采是京东旗下<B2B>平台,为您提供优质服务",
+                content: "药京采是京东旗下<B2B>平台,为您提供优质服务,药京采是京东旗下<B2B>平台,为您提供优质服务",
+                subTitle: "活动时间",
+                description: "2019.11.01 00:00:00-2019.11.11 24:00:00",
+                shareUrl: "https://www.jd.com",
+                shareImageUrl: "http://pic31.nipic.com/20130729/9959548_153744264349_2.jpg",
+            }
+        };
 
         var param2 = {
-                    style: 2,
-                    platform: 7,
-                    message: {
-                        title: "药京采是京东旗下<B2B>平台,为您提供优质服务",
-                        content: "药京采是京东旗下<B2B>平台,为您提供优质服务,药京采是京东旗下<B2B>平台,为您提供优质服务",
-                        subTitle: "活动时间",
-                        description: "2019.11.01 00:00:00-2019.11.11 24:00:00",
-                        shareUrl: "https://www.jd.com",
-                        shareImageUrl: "http://pic31.nipic.com/20130729/9959548_153744264349_2.jpg",
-                    }
-                };
+            style: 2,
+            platform: 7,
+            message: {
+                title: "药京采是京东旗下<B2B>平台,为您提供优质服务",
+                content: "药京采是京东旗下<B2B>平台,为您提供优质服务,药京采是京东旗下<B2B>平台,为您提供优质服务",
+                subTitle: "活动时间",
+                description: "2019.11.01 00:00:00-2019.11.11 24:00:00",
+                shareUrl: "https://www.jd.com",
+                shareImageUrl: "http://pic31.nipic.com/20130729/9959548_153744264349_2.jpg",
+            }
+        };
 
-        function AppUseNativeShare(json) {
-            window.webkit.messageHandlers.AppUseNativeShare.postMessage(json);
-        }
 
         function ocToJs() {
             document.getElementsByTagName('body')[0].style.backgroundColor = "#00FF00";
             return "oc掉js后返回给native的值";
         }
-        
+
         onload = function () {
+
+
+            function AppUseNativeShare(json) {
+                window.webkit.messageHandlers.AppUseNativeShare.postMessage(json);
+            }
+
             document.getElementById('share1').onclick = function () {
                 console.log('详情页分享');
                 AppUseNativeShare(param1);
