@@ -56,8 +56,6 @@
             message: {
                 title: "药京采是京东旗下<B2B>平台,为您提供优质服务",
                 content: "药京采是京东旗下<B2B>平台,为您提供优质服务,药京采是京东旗下<B2B>平台,为您提供优质服务",
-                subTitle: "活动时间",
-                description: "2019.11.01 00:00:00-2019.11.11 24:00:00",
                 shareUrl: "https://www.jd.com",
                 shareImageUrl: "http://pic31.nipic.com/20130729/9959548_153744264349_2.jpg",
             }
@@ -83,14 +81,12 @@
         }
 
         onload = function () {
-
-
-            function AppUseNativeShare(json) {
-                window.webkit.messageHandlers.AppUseNativeShare.postMessage(json);
+            function AppUseNativeShare(param) {
+                window.webkit.messageHandlers.AppUseNativeShare.postMessage(param);
             }
 
             document.getElementById('share1').onclick = function () {
-                console.log('详情页分享');
+                console.log(param1);
                 AppUseNativeShare(param1);
             }
 
