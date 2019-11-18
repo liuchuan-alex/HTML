@@ -68,15 +68,7 @@
 
     <div>
         <p class="desc">在微信打开分享页面, 调转原生<药京采App>则可以点击下面按钮测试</p>
-        <a href="openapp.jdmedicine://">
-            <button id='JumpNativeApp'>调转药京采App</button>
-        </a>
-
-        <br>
-        <a href="openapp.jdmedicine://">我就是一个测试按钮</a>
-
-        <br>
-        <a href="http://www.baidu.com">百度一下</a>
+        <button id='JumpNativeApp'>调转药京采App</button>
 
     </div>
 
@@ -117,7 +109,7 @@
         }
 
         function JumpNativeApp() {
-
+            window.location.href = "iOSDevTip://";
         }
 
         onload = function () {
@@ -139,7 +131,8 @@
     </script>
 
     <script>
-        window.location.href = "openapp.jdmedicine://";
+        // openapp.jdmedicine://  正式环境
+        window.location.href = "iOSDevTip://";
     </script>
 </body>
 
