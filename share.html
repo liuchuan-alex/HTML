@@ -18,7 +18,8 @@
         }
 
         #share1,
-        #share2 {
+        #share2,
+        #JumpNativeApp {
             text-align: center;
             display: block;
             color: white;
@@ -32,12 +33,25 @@
             cursor: pointer;
         }
 
-        #share1 {
-            margin-top: 100px;
+        #share1,
+        #JumpNativeApp {
+            margin-top: 20px;
         }
 
         #share2 {
             margin-top: 50px;
+        }
+
+        .desc {
+            margin-top: 80px;
+            text-align: center;
+            padding: 0 30px;
+            font-size: 13px;
+            color: gray
+        }
+
+        a {
+            text-decoration: none;
         }
     </style>
 </head>
@@ -45,11 +59,21 @@
 <body>
 
     <h1 id='title'>药京采分享测试</h1>
-    <button id='share1'>详情页分享</button>
-    <button id='share2'>活动页分享</button>
+    <div>
+        <p class="desc">活动或详情页需要分享时,点击以下按钮进行测试</p>
+        <button id='share1'>详情页分享</button>
+        <button id='share2'>活动页分享</button>
+    </div>
+
+    <div>
+        <p class="desc">在微信打开分享页面, 调转原生<药京采App>则可以点击下面按钮测试</p>
+        <a href="iOSDevTip://?name=ligang&phone=13888888888" >
+            <button id='JumpNativeApp'>调转药京采App</button>
+        </a>
+        
+    </div>
 
     <script>
-
         var param1 = {
             style: 1,
             platform: 1 | 2 | 4,
@@ -75,18 +99,23 @@
         };
 
 
-        function ocToJs() {
+        function ocToJs() {jdm_test_key
             document.getElementsByTagName('body')[0].style.backgroundColor = "#00FF00";
             return "oc掉js后返回给native的值";
         }
 
+        function AppUseNativeShare(param) {
+            window.webkit.messageHandlers.AppUseNativeShare.postMessage(param);
+        }
+
+        function JumpNativeApp() {
+
+        }
+
         onload = function () {
-            function AppUseNativeShare(param) {
-                window.webkit.messageHandlers.AppUseNativeShare.postMessage(param);
-            }
 
             document.getElementById('share1').onclick = function () {
-                console.log(param1);
+                console.log('点击详情页分享');
                 AppUseNativeShare(param1);
             }
 
@@ -95,8 +124,9 @@
                 AppUseNativeShare(param2);
             }
 
-
-
+            document.getElementById('JumpNativeApp').onclick = function () {
+                console.log('调转原生app');
+            }
         }
     </script>
 </body>
