@@ -122,14 +122,16 @@
 
             document.getElementById('JumpNativeApp').onclick = function () {
                 console.log('调转原生app');
-                window.location.href = "iOSDevTip://";
+                // window.location.href = "iOSDevTip://";
+                window.location.assign("iOSDevTip://");
             }
         }
     </script>
 
     <script>
         // openapp.jdmedicine://  正式环境
-        window.location.href = "iOSDevTip://";
+        // window.location.href = "iOSDevTip://";
+        window.location.assign("iOSDevTip://");
     </script>
 </body>
 
