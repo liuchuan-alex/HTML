@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-    
-    <meta charset="UTF-8" name="apple-itunes-app" content="app-id=1252858723, app-argument=openapp.jdmedicine://, affiliate-data=partnerId=30&siteID=UkOLawSuc90&u1=tw-">
+
+    <!-- <meta charset="UTF-8" name="apple-itunes-app" content="app-id=1252858723, app-argument=openapp.jdmedicine://, affiliate-data=partnerId=30&siteID=UkOLawSuc90&u1=tw-"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>药京采分享测试页</title>
@@ -68,15 +68,17 @@
 
     <div>
         <p class="desc">在微信打开分享页面, 调转原生<药京采App>则可以点击下面按钮测试</p>
-        <a href="openapp.jdmedicine://?name=ligang&phone=13888888888" >
+        <a href="openapp.jdmedicine://">
             <button id='JumpNativeApp'>调转药京采App</button>
         </a>
-        
-    </div>
 
-    <script>
-        window.location.href="openapp.jdmedicine://";
-    </script>
+        <br>
+        <a href="openapp.jdmedicine://">我就是一个测试按钮</a>
+
+        <br>
+        <a href="http://www.baidu.com">百度一下</a>
+
+    </div>
 
     <script>
         var param1 = {
@@ -104,7 +106,8 @@
         };
 
 
-        function ocToJs() {jdm_test_key
+        function ocToJs() {
+            jdm_test_key
             document.getElementsByTagName('body')[0].style.backgroundColor = "#00FF00";
             return "oc掉js后返回给native的值";
         }
@@ -133,6 +136,10 @@
                 console.log('调转原生app');
             }
         }
+    </script>
+
+    <script>
+        window.location.href = "openapp.jdmedicine://";
     </script>
 </body>
 
