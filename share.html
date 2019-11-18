@@ -68,7 +68,10 @@
 
     <div>
         <p class="desc">在微信打开分享页面, 调转原生<药京采App>则可以点击下面按钮测试</p>
-        <button id='JumpNativeApp'>调转药京采App</button>
+        <a href="iOSDevTip://">
+            <button id='JumpNativeApp'>调转药京采App</button>
+        </a>
+        
 
     </div>
 
@@ -119,19 +122,13 @@
                 console.log('点击活动页分享');
                 AppUseNativeShare(param2);
             }
-
-            document.getElementById('JumpNativeApp').onclick = function () {
-                console.log('调转原生app');
-                // window.location.href = "iOSDevTip://";
-                window.location.assign("iOSDevTip://");
-            }
         }
     </script>
 
     <script>
         // openapp.jdmedicine://  正式环境
         // window.location.href = "iOSDevTip://";
-        // window.location.assign("iOSDevTip://");
+        window.location.assign("iOSDevTip://");
     </script>
 </body>
 
