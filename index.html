@@ -21,26 +21,30 @@
             cursor: pointer;
         }
     </style>
-    <script src="./test.js"></script>
+    <script src="./jdmbridge-1.0.0.js"></script>
 </head>
 
 <body>
-
     <button id="btn">我就是一个测试按钮</button>
     <script>
-        document.getElementById('btn').onclick = function () {
-            let de = judgeDevice();
-            console.log(de);
-            jdm.test();
-            let t = jdm.getapp();
-            console.log(t);
 
-            try {
-                const ua = navigator.userAgent;
-                window.webkit.messageHandlers.getUserAgent.postMessage(ua);
-            } catch (error) {
-                console.log(error);
-            }
+
+        function test(b) {
+            console.log(b);
+            return 'aa';
+        }
+        function oc_test(aa) {
+            console.log(aa);
+            return 'world';
+        }
+
+        let json = {
+            title: "hello",
+            func: "test",
+        }
+
+        document.getElementById('btn').onclick = function () {
+            jdm.getAppInfo(json);
         }
     </script>
 </body>
