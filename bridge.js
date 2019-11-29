@@ -1,6 +1,8 @@
 // jsbridge相关
 //客户端写死ua  ios是 /yccios   安卓是yccandroid
 
+
+
 const judgeDevice = () => {
     const ua = navigator.userAgent;
     let isAndroid = ua.indexOf('android') > -1; // android终端
@@ -209,7 +211,6 @@ const bridge = {
 if (judgeDevice() === 'ios') {
     try {
         /* eslint-disable no-undef */
-
         window.webkit.messageHandlers.AppGetCommonP.postMessage(null);
     } catch (error) {
         console.log(error);

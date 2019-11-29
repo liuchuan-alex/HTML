@@ -6,47 +6,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+
     <style>
-        #btn {
-            text-align: center;
+        #btn,
+        #btn1 {
             display: block;
-            color: white;
-            font-size: 16px;
-            background-color: #3385ff;
-            border-radius: 6px;
-            border: 0;
             margin: 100px auto;
             padding: 5px 10px;
             outline: none;
+            border-radius: 6px;
             cursor: pointer;
+            text-align: center;
+            color: white;
+            font-size: 16px;
+            background-color: #3385ff;
+        }
+
+        #btn1 {
+            margin-top: 100px;
         }
     </style>
-    <script src="./jdmbridge-1.0.0.js"></script>
 </head>
 
 <body>
-    <button id="btn">我就是一个测试按钮</button>
+
+   
+
+    <button id="btn">测试appTest按钮,无参数</button>
+    <button id="btn1">goHome按钮,有参数,有返回值</button>
+
+    <img src="./img/man1.jpg" width="1000px" alt="">
+    <img src="./img/man2.jpg" width="1000px" alt="">
+
     <script>
-
-
-        function test(b) {
-            console.log(b);
-            return 'aa';
-        }
-        function oc_test(aa) {
-            console.log(aa);
-            return 'world';
+        function iosCallFunc(params) {
+            console.log('iOS端调用我了!' + params);
+            return "我是js返回";
         }
 
-        let json = {
+        let params = {
             title: "hello",
-            func: "test",
+            desc: "desc",
+            func: "iosCallFunc"
         }
 
+        // App端调用JS函数, 可用于获取App端返回值
+        function appCallFunc(params) {
+           // App调用执行
+        }
         document.getElementById('btn').onclick = function () {
-            jdm.getAppInfo(json);
+
+            var params = {
+                funcName: "appCallFunc"
+            };
+            jdm.appGetCommonParams(JSON.stringify(params));
+        }
+
+        document.getElementById('btn1').onclick = function () {
+            // YycAppJs.goHome(params);
+            var params = {
+                url: 'http://www.jd.com'
+            };
+            jdm.appGoLogin(JSON.stringify(params));
         }
     </script>
+
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <script src="jdm-1.0.0.js"></script> -->
+<!-- <script>
+
+        function setupWebViewJavascriptBridge(callback) {            
+            if (window.WebViewJavascriptBridge) {
+                return callback(WebViewJavascriptBridge);
+            }
+            if (window.WVJBCallbacks) {
+                return window.WVJBCallbacks.push(callback);
+            }
+            // 创建一个 WVJBCallbacks 全局属性数组，并将 callback 插入到数组中。
+            window.WVJBCallbacks = [callback];
+            // 创建一个 iframe 元素
+            var WVJBIframe = document.createElement('iframe');
+            // 不显示
+            WVJBIframe.style.display = 'none';
+            WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
+            // 把 iframe 添加到当前文导航上。
+            document.documentElement.appendChild(WVJBIframe);
+
+            setTimeout(function () {
+                document.documentElement.removeChild(WVJBIframe)
+            }, 0)
+        };
+
+        // 这里主要是注册 OC 将要调用的 JS 方法。
+        setupWebViewJavascriptBridge(function (bridge) {
+            // 声明 OC 需要调用的 JS 方法。
+            bridge.registerHanlder('testJavaScriptFunction', function (data, responseCallback) {
+                // data 是 OC 传递过来的数据.
+                // responseCallback 是 JS 调用完毕之后传递给 OC 的数据
+                alert("JS 被 OC 调用了.");
+                responseCallback({ data: "js 的数据", from: "JS" });
+            });
+        });
+
+
+         document.getElementById('btn1').onclick = function () {
+            WebViewJavascriptBridge.callHandler('nativeClick', { data: "这是 JS 传递到 OC 的数据" }, function (dataFromOC) {
+                alert("JS 调用了 OC 注册的 nativeClick 方法");
+                console.log(dataFromOC);
+            })
+        }
+    </script> -->
